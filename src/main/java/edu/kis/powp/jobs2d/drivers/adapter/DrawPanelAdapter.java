@@ -31,6 +31,7 @@ public class DrawPanelAdapter implements Job2dDriver {
 		line.setEndCoordinates(x, y);
 
 		drawPanelController.drawLine(line);
+		setPosition(x, y);
 	}
 
 	@Override
