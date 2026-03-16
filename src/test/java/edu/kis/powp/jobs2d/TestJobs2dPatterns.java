@@ -12,9 +12,11 @@ import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
+import edu.kis.powp.jobs2d.features.CustomLine;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
+import edu.kis.legacy.drawer.shape.ILine;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -50,6 +52,10 @@ public class TestJobs2dPatterns {
 		Job2dDriver specialLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(),
 				LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line Simulator", specialLineDriver);
+
+		ILine customLine = new CustomLine(java.awt.Color.ORANGE, 10.f, true);
+		Job2dDriver customLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), customLine);
+		DriverFeature.addDriver("Custom Line", customLineDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
