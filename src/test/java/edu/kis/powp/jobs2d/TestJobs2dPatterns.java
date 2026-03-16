@@ -9,12 +9,14 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.adapter.AbstractDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.features.CustomLine;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.magicpresets.FiguresJane;
 import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 import edu.kis.legacy.drawer.shape.ILine;
 
@@ -33,6 +35,12 @@ public class TestJobs2dPatterns {
 
 		application.addTest("Figure Joe 2", (ActionEvent e) -> {
 			FiguresJoe.figureScript2(DriverFeature.getDriverManager().getCurrentDriver());
+		});
+
+		application.addTest("Figure Jane", (ActionEvent e) -> {
+			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
+			AbstractDriver adapter = new AbstractDriverAdapter(0, 0, currentDriver);
+			FiguresJane.figureScript(adapter);
 		});
 	}
 
