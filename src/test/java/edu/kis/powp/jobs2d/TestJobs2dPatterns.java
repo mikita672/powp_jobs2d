@@ -11,7 +11,7 @@ import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.AbstractDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelDriverAdapter;
-import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineDriverAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.features.CustomLine;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -57,12 +57,12 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawPanelDriverAdapter(DrawerFeature.getDrawerController());
 		DriverFeature.addDriver("Draw Panel Simulator", testDriver);
 
-		Job2dDriver specialLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(),
+		Job2dDriver specialLineDriver = new SpecialLineDriverAdapter(DrawerFeature.getDrawerController(),
 				LineFactory.getSpecialLine());
 		DriverFeature.addDriver("Special Line Simulator", specialLineDriver);
 
 		ILine customLine = new CustomLine(java.awt.Color.ORANGE, 10.f, true);
-		Job2dDriver customLineDriver = new LineDrawerAdapter(DrawerFeature.getDrawerController(), customLine);
+		Job2dDriver customLineDriver = new SpecialLineDriverAdapter(DrawerFeature.getDrawerController(), customLine);
 		DriverFeature.addDriver("Custom Line", customLineDriver);
 
 		DriverFeature.updateDriverInfo();
