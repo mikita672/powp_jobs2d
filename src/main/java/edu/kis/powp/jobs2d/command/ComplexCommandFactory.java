@@ -26,4 +26,16 @@ public class ComplexCommandFactory {
 
         return new ComplexCommand(commands);
     }
+
+    public static ComplexCommand createSquare(int x, int y, int side) {
+        List<DriverCommand> commands = new ArrayList<>();
+
+        commands.add(new SetPositionCommand(x, y));
+        commands.add(new OperateToCommand(x + side, y));
+        commands.add(new OperateToCommand(x + side, y + side));
+        commands.add(new OperateToCommand(x, y + side));
+        commands.add(new OperateToCommand(x, y));
+
+        return new ComplexCommand(commands);
+    }
 }
