@@ -51,6 +51,13 @@ public class TestJobs2dPatterns {
 
 			rectangleCommand.execute(currentDriver);
 		});
+
+		application.addTest("Triangle (Command Pattern)", (ActionEvent e) -> {
+			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
+			ComplexCommand triangleCommand = ComplexCommandFactory.createTriangle(-75, -75, 0, 75, 150, -75);
+
+			triangleCommand.execute(currentDriver);
+		});
 	}
 
 	/**
