@@ -65,6 +65,17 @@ public class TestJobs2dPatterns {
 
 			squareCommand.execute(currentDriver);
 		});
+
+		application.addTest("Complex Test (Command Pattern)", (ActionEvent e) -> {
+			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
+			ComplexCommand squareCommand = ComplexCommandFactory.createSquare(-75, -75, 100);
+			ComplexCommand triangleCommand = ComplexCommandFactory.createTriangle(-75, -75, 0, 75, 150, -75);
+			ComplexCommand rectangleCommand = ComplexCommandFactory.createRectangle(-100, -50, 200, 100);
+
+			squareCommand.execute(currentDriver);
+			triangleCommand.execute(currentDriver);
+			rectangleCommand.execute(currentDriver);
+		});
 	}
 
 	/**
