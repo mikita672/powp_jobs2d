@@ -9,6 +9,8 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.command.ComplexCommand;
+import edu.kis.powp.jobs2d.command.ComplexCommandFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.AbstractDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawPanelDriverAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.SpecialLineDriverAdapter;
@@ -41,6 +43,13 @@ public class TestJobs2dPatterns {
 			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
 			AbstractDriver adapter = new AbstractDriverAdapter(0, 0, currentDriver);
 			FiguresJane.figureScript(adapter);
+		});
+
+		application.addTest("Rectangle (Command Pattern)", (ActionEvent e) -> {
+			Job2dDriver currentDriver = DriverFeature.getDriverManager().getCurrentDriver();
+			ComplexCommand rectangleCommand = ComplexCommandFactory.createRectangle(-100, -50, 200, 100);
+
+			rectangleCommand.execute(currentDriver);
 		});
 	}
 
